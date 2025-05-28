@@ -9,10 +9,17 @@ parameters:
     label: GUI Hint
     dtype: gui_hint
     hide: part
+-   id: auto_scroll
+    label: Auto Scroll
+    dtype: bool
+    default: true
 
 inputs:
 -   domain: message
     id: in
+    optional: true
+-   domain: message
+    id: config
     optional: true
 
 templates:
@@ -22,6 +29,6 @@ templates:
         <%
             win = 'self.%s' % id
         %>\
-        dect2.console()
+        dect2.console(auto_scroll=${auto_scroll})
         ${gui_hint() % win}
 file_format: 1
