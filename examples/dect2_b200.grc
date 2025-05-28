@@ -33,6 +33,27 @@ options:
     state: enabled
 
 blocks:
+- name: auto_scroll
+  id: variable_qtgui_msgcheckbox
+  parameters:
+    cellalignment: '1'
+    comment: ''
+    gui_hint: '[0,2]'
+    initPressed: 'True'
+    label: Auto Scroll
+    outputmsgname: auto_scroll
+    pressed: 'True'
+    released: 'False'
+    type: bool
+    value: 'True'
+    verticalalignment: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [552, 280.0]
+    rotation: 0
+    state: enabled
 - name: baseband_sampling_rate
   id: variable
   parameters:
@@ -85,7 +106,7 @@ blocks:
   id: variable_qtgui_chooser
   parameters:
     comment: ''
-    gui_hint: ''
+    gui_hint: '[0,1]'
     label: Select Part
     label0: ''
     label1: ''
@@ -128,7 +149,7 @@ blocks:
   id: variable_qtgui_chooser
   parameters:
     comment: ''
-    gui_hint: ''
+    gui_hint: '[0,0]'
     label: Carrier Number
     label0: ch0
     label1: ch1
@@ -215,6 +236,7 @@ blocks:
   parameters:
     affinity: ''
     alias: ''
+    auto_scroll: 'True'
     comment: ''
     gui_hint: ''
   states:
@@ -795,4 +817,4 @@ connections:
 
 metadata:
   file_format: 1
-  grc_version: v3.11.0.0git-46-g614681ba
+  grc_version: 3.10.12.0

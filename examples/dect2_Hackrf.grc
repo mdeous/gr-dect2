@@ -11,7 +11,7 @@ options:
     gen_linking: dynamic
     generate_options: qt_gui
     hier_block_src_path: '.:'
-    id: top_block
+    id: dect2_hackrf
     max_nouts: '0'
     output_language: python
     placement: (0,0)
@@ -28,7 +28,7 @@ options:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [10, 10]
+    coordinate: [16, 12.0]
     rotation: 0
     state: enabled
 
@@ -51,7 +51,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [496, 432]
+    coordinate: [536, 80.0]
     rotation: 0
     state: enabled
 - name: VGA_bb_gain
@@ -72,7 +72,28 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [632, 432]
+    coordinate: [656, 80.0]
+    rotation: 0
+    state: enabled
+- name: auto_scroll
+  id: variable_qtgui_msgcheckbox
+  parameters:
+    cellalignment: '1'
+    comment: ''
+    gui_hint: '[0,2]'
+    initPressed: 'True'
+    label: Auto Scroll
+    outputmsgname: auto_scroll
+    pressed: 'True'
+    released: 'False'
+    type: bool
+    value: 'True'
+    verticalalignment: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [296, 592.0]
     rotation: 0
     state: enabled
 - name: baseband_sampling_rate
@@ -84,7 +105,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [10, 74]
+    coordinate: [168, 12.0]
     rotation: 0
     state: enabled
 - name: dect_channel_bandwidth
@@ -96,7 +117,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [10, 270]
+    coordinate: [600, 12.0]
     rotation: 0
     state: enabled
 - name: dect_occupied_bandwidth
@@ -108,7 +129,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [10, 202]
+    coordinate: [440, 12.0]
     rotation: 0
     state: enabled
 - name: dect_symbol_rate
@@ -120,7 +141,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [9, 138]
+    coordinate: [320, 12.0]
     rotation: 0
     state: enabled
 - name: if_gain
@@ -141,7 +162,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [360, 432]
+    coordinate: [432, 80.0]
     rotation: 0
     state: enabled
 - name: options_low_pass
@@ -153,15 +174,15 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [536, 28]
+    coordinate: [1000, 12.0]
     rotation: 0
     state: enabled
 - name: part_id
   id: variable_qtgui_chooser
   parameters:
     comment: ''
-    gui_hint: ''
-    label: Select Part
+    gui_hint: '[0,1]'
+    label: Part
     label0: ''
     label1: ''
     label2: ''
@@ -183,7 +204,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [10, 410]
+    coordinate: [184, 80.0]
     rotation: 0
     state: enabled
 - name: ppm_corr
@@ -204,7 +225,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [224, 432]
+    coordinate: [328, 80.0]
     rotation: 0
     state: enabled
 - name: resample_ratio
@@ -216,7 +237,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [671, 26]
+    coordinate: [1120, 12.0]
     rotation: 0
     state: true
 - name: resampler_filter_taps
@@ -229,14 +250,14 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [10, 340]
+    coordinate: [752, 12.0]
     rotation: 0
     state: enabled
 - name: rx_freq
   id: variable_qtgui_chooser
   parameters:
     comment: ''
-    gui_hint: ''
+    gui_hint: '[0,0]'
     label: Carrier Number
     label0: ch0
     label1: ch1
@@ -272,7 +293,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [11, 548]
+    coordinate: [16, 80.0]
     rotation: 0
     state: enabled
 - name: xlate_offset1
@@ -284,7 +305,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [432, 28]
+    coordinate: [904, 12.0]
     rotation: 0
     state: enabled
 - name: audio_sink_0
@@ -301,7 +322,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1080, 484]
+    coordinate: [912, 500.0]
     rotation: 0
     state: enabled
 - name: blocks_short_to_float_0
@@ -318,7 +339,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1064, 268]
+    coordinate: [560, 500.0]
     rotation: 0
     state: enabled
 - name: console_0
@@ -326,13 +347,14 @@ blocks:
   parameters:
     affinity: ''
     alias: ''
+    auto_scroll: auto_scroll
     comment: ''
     gui_hint: ''
   states:
-    bus_sink: false
+    bus_sink: true
     bus_source: false
     bus_structure: null
-    coordinate: [840, 344]
+    coordinate: [584, 552.0]
     rotation: 0
     state: enabled
 - name: dect2_packet_decoder_0
@@ -348,7 +370,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [584, 272]
+    coordinate: [160, 520.0]
     rotation: 0
     state: enabled
 - name: dect2_packet_receiver_0
@@ -363,8 +385,8 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [256, 272]
-    rotation: 0
+    coordinate: [160, 424.0]
+    rotation: 180
     state: enabled
 - name: dect2_phase_diff_0
   id: dect2_phase_diff
@@ -378,8 +400,8 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1188, 189]
-    rotation: 0
+    coordinate: [856, 440.0]
+    rotation: 180
     state: enabled
 - name: freq_xlating_fir_filter_xxx_0
   id: freq_xlating_fir_filter_xxx
@@ -398,7 +420,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [440, 96]
+    coordinate: [328, 288.0]
     rotation: 0
     state: enabled
 - name: mmse_resampler_xx_0
@@ -416,7 +438,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [985, 66]
+    coordinate: [776, 312.0]
     rotation: 0
     state: true
 - name: rational_resampler_xxx_0
@@ -436,7 +458,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [848, 456]
+    coordinate: [728, 480.0]
     rotation: 0
     state: enabled
 - name: rational_resampler_xxx_1
@@ -456,7 +478,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [728, 92.0]
+    coordinate: [552, 288.0]
     rotation: 0
     state: true
 - name: rtlsdr_source_0
@@ -813,7 +835,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [192, 36]
+    coordinate: [64, 216.0]
     rotation: 0
     state: enabled
 - name: vocoder_g721_decode_bs_0
@@ -828,11 +850,12 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [816, 272]
+    coordinate: [376, 504.0]
     rotation: 0
     state: enabled
 
 connections:
+- [auto_scroll, state, console_0, config]
 - [blocks_short_to_float_0, '0', rational_resampler_xxx_0, '0']
 - [dect2_packet_decoder_0, '0', vocoder_g721_decode_bs_0, '0']
 - [dect2_packet_decoder_0, log_out, console_0, in]
@@ -848,4 +871,4 @@ connections:
 
 metadata:
   file_format: 1
-  grc_version: v3.11.0.0git-46-g614681ba
+  grc_version: 3.10.12.0

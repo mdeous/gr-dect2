@@ -23,6 +23,7 @@ options:
     sizing_mode: fixed
     thread_safe_setters: ''
     title: ''
+    window_size: (1000,1000)
   states:
     bus_sink: false
     bus_source: false
@@ -32,6 +33,27 @@ options:
     state: enabled
 
 blocks:
+- name: auto_scroll
+  id: variable_qtgui_msgcheckbox
+  parameters:
+    cellalignment: '1'
+    comment: ''
+    gui_hint: '[0,2]'
+    initPressed: 'True'
+    label: Auto Scroll
+    outputmsgname: auto_scroll
+    pressed: 'True'
+    released: 'False'
+    type: bool
+    value: 'True'
+    verticalalignment: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [544, 280.0]
+    rotation: 0
+    state: enabled
 - name: baseband_sampling_rate
   id: variable
   parameters:
@@ -84,7 +106,7 @@ blocks:
   id: variable_qtgui_chooser
   parameters:
     comment: ''
-    gui_hint: ''
+    gui_hint: '[0,1]'
     label: Select Part
     label0: ''
     label1: ''
@@ -140,7 +162,7 @@ blocks:
   id: variable_qtgui_chooser
   parameters:
     comment: ''
-    gui_hint: ''
+    gui_hint: '[0,0]'
     label: Carrier Number
     label0: ch0
     label1: ch1
@@ -231,6 +253,7 @@ blocks:
   parameters:
     affinity: ''
     alias: ''
+    auto_scroll: 'True'
     comment: ''
     gui_hint: ''
   states:
@@ -797,6 +820,7 @@ blocks:
     state: enabled
 
 connections:
+- [auto_scroll, state, console_0, config]
 - [blocks_short_to_float_0, '0', rational_resampler_xxx_0, '0']
 - [dect2_packet_decoder_0, '0', vocoder_g721_decode_bs_0, '0']
 - [dect2_packet_decoder_0, log_out, console_0, in]
@@ -811,3 +835,4 @@ connections:
 
 metadata:
   file_format: 1
+  grc_version: 3.10.12.0
