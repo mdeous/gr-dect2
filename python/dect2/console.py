@@ -34,11 +34,13 @@ except ImportError:
 class console(gr.basic_block, QtWidgets.QTextEdit):
     console_update = QtCore.pyqtSignal()
 
-    def __init__(self):
+    def __init__(self, auto_scroll=True):
         gr.basic_block.__init__(self, name="console", in_sig=[], out_sig=[])
         QtWidgets.QTextEdit.__init__(self)
         self.message_port_register_in(pmt.intern("in"))
         self.set_msg_handler(pmt.intern("in"), self.handle_msg)
+        self.message_port_register_in(pmt.intern("config"))
+        self.set_msg_handler(pmt.intern("config"), self.handle_config)
 
         self.console_update.connect(self.update)
 
@@ -46,22 +48,35 @@ class console(gr.basic_block, QtWidgets.QTextEdit):
         self.font.setFamily("Courier New");
         self.font.setStyleStrategy(QtGui.QFont.NoAntialias);
         self.document().setDefaultFont(self.font);
-       
+        self.auto_scroll = auto_scroll
 
     def handle_msg(self, msg):
         if(pmt.dict_has_key( msg, pmt.to_pmt("log_msg"))):        
             log_msg = pmt.dict_ref( msg, pmt.to_pmt("log_msg"), pmt.PMT_NIL)
             self.console_msg = pmt.to_python(log_msg)
             self.console_update.emit()
+    
+    def handle_config(self, msg):
+        value = pmt.to_python(msg)
+        if isinstance(value, tuple):
+            data = dict([value])
+            if "auto_scroll" in data:
+                self.auto_scroll = data["auto_scroll"]
         
-    def update(self):    
-        self.append(self.console_msg)
-        self.verticalScrollBar().setValue(self.verticalScrollBar().maximum())
-        #self.moveCursor(QtGui.QTextCursor.End)
+    def update(self):
+        scrollbar = self.verticalScrollBar()
+        current_scroll_pos = scrollbar.value()        
+        cursor = self.textCursor()
+        cursor.movePosition(QtGui.QTextCursor.End)
+        
+        if not self.console_msg.endswith("\n"):
+            self.console_msg += "\n"
+        cursor.insertText(self.console_msg)
+        
+        if self.auto_scroll:
+            scrollbar.setValue(scrollbar.maximum())
+        else:
+            scrollbar.setValue(current_scroll_pos)
 
     def work(self, input_items, output_items):
-        pass   
-
-
-
-
+        pass
